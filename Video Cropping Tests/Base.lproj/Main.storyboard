@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9Wc-h3-hJ4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fKY-7O-5Cv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
@@ -96,10 +96,18 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="ZsN-BX-dto">
+                                <rect key="frame" x="182" y="288" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="T7q-Ta-IHT"/>
+                                    <constraint firstAttribute="width" constant="50" id="yAd-A7-HGL"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NWk-k0-mnc"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="ZsN-BX-dto" firstAttribute="centerX" secondItem="nZ6-7v-uem" secondAttribute="centerX" id="6HL-1j-zIN"/>
                             <constraint firstItem="2TE-Fy-pSe" firstAttribute="centerX" secondItem="nZ6-7v-uem" secondAttribute="centerX" id="BIX-TW-5nI"/>
                             <constraint firstItem="jJ4-lK-yQ9" firstAttribute="top" secondItem="B9v-cX-cuO" secondAttribute="bottom" constant="20" id="Dxc-gS-Spi"/>
                             <constraint firstItem="NWk-k0-mnc" firstAttribute="trailing" secondItem="2TE-Fy-pSe" secondAttribute="trailing" constant="20" id="FMo-MA-CqC"/>
@@ -109,12 +117,13 @@
                             <constraint firstItem="B9v-cX-cuO" firstAttribute="top" secondItem="2TE-Fy-pSe" secondAttribute="bottom" constant="20" id="cDt-ii-nE2"/>
                             <constraint firstItem="jJ4-lK-yQ9" firstAttribute="centerX" secondItem="nZ6-7v-uem" secondAttribute="centerX" id="grz-R5-Uf4"/>
                             <constraint firstItem="B9v-cX-cuO" firstAttribute="centerX" secondItem="nZ6-7v-uem" secondAttribute="centerX" id="k8t-y4-ZOk"/>
+                            <constraint firstItem="ZsN-BX-dto" firstAttribute="top" secondItem="NWk-k0-mnc" secondAttribute="top" constant="200" id="l8n-LJ-GpA"/>
                             <constraint firstItem="Nsx-zZ-VGD" firstAttribute="centerX" secondItem="nZ6-7v-uem" secondAttribute="centerX" id="liM-5B-Ohz"/>
                             <constraint firstItem="2TE-Fy-pSe" firstAttribute="leading" secondItem="NWk-k0-mnc" secondAttribute="leading" constant="20" id="u2q-dp-GDp"/>
                             <constraint firstItem="jJ4-lK-yQ9" firstAttribute="leading" secondItem="NWk-k0-mnc" secondAttribute="leading" constant="20" id="wfY-ZH-yjz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="PryntTrimmerView" id="pLO-Xc-bM2">
+                    <navigationItem key="navigationItem" title="Prynt Trimmer" id="pLO-Xc-bM2">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="duy-TZ-ct3">
                             <connections>
                                 <action selector="selectVideo:" destination="Fj8-rO-5zG" id="hM3-BO-xNz"/>
@@ -125,6 +134,7 @@
                     <connections>
                         <outlet property="imageView" destination="2TE-Fy-pSe" id="bMZ-EH-ize"/>
                         <outlet property="includeAudio" destination="p8f-ay-M7E" id="Q2V-4b-NvG"/>
+                        <outlet property="loadingIndicator" destination="ZsN-BX-dto" id="uHa-Je-pM8"/>
                         <outlet property="playButton" destination="B9v-cX-cuO" id="PVL-bw-11W"/>
                         <outlet property="scrollBack" destination="n5u-rh-0lD" id="4wc-60-AzZ"/>
                         <outlet property="scrollForward" destination="loX-6r-dkV" id="5zE-Aa-UHB"/>
@@ -133,25 +143,155 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKN-fj-Gy8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2686.9565217391305" y="758.70535714285711"/>
+            <point key="canvasLocation" x="3597.1014492753625" y="758.70535714285711"/>
+        </scene>
+        <!--Video Editor Options-->
+        <scene sceneID="yNr-6l-wzX">
+            <objects>
+                <viewController id="8zm-Ff-qvU" customClass="ViewController" customModule="Video_Cropping_Tests" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2kT-ek-ifD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ztl-K9-OcD">
+                                <rect key="frame" x="100" y="407" width="214" height="82"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hh1-er-Gce">
+                                        <rect key="frame" x="0.0" y="0.0" width="214" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Imgly Video Editor"/>
+                                        <connections>
+                                            <segue destination="9u9-h0-Dve" kind="show" id="mkb-hX-xc0"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Thg-8F-fFc">
+                                        <rect key="frame" x="0.0" y="51" width="214" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Prynt Trimmer"/>
+                                        <connections>
+                                            <segue destination="Fj8-rO-5zG" kind="show" id="vgB-TE-NWW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="fQk-VA-tkQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ztl-K9-OcD" firstAttribute="centerX" secondItem="2kT-ek-ifD" secondAttribute="centerX" id="CNV-8C-Ai8"/>
+                            <constraint firstItem="fQk-VA-tkQ" firstAttribute="trailing" secondItem="Ztl-K9-OcD" secondAttribute="trailing" constant="100" id="c1U-PE-4xf"/>
+                            <constraint firstItem="Ztl-K9-OcD" firstAttribute="centerY" secondItem="2kT-ek-ifD" secondAttribute="centerY" id="iEO-BG-hbT"/>
+                            <constraint firstItem="Ztl-K9-OcD" firstAttribute="leading" secondItem="fQk-VA-tkQ" secondAttribute="leading" constant="100" id="uJs-Y0-DPx"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Video Editor Options" id="dAf-LX-wGI">
+                        <barButtonItem key="backBarButtonItem" title="Options" id="fbC-gZ-m46"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tHm-tL-Fnk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2800" y="461"/>
+        </scene>
+        <!--Imgly Video Editor-->
+        <scene sceneID="xxP-4H-afy">
+            <objects>
+                <viewController id="9u9-h0-Dve" customClass="ImglyVideoEditorViewController" customModule="Video_Cropping_Tests" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bca-7f-ynj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="drU-xS-ZKz">
+                                <rect key="frame" x="189" y="510" width="36.5" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="pause" catalog="system"/>
+                                <connections>
+                                    <action selector="play:" destination="9u9-h0-Dve" eventType="touchUpInside" id="gn9-Wq-EFg"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="hka-CV-Luu">
+                                <rect key="frame" x="125.5" y="561" width="163.5" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Include Audio: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2U-LX-UgS">
+                                        <rect key="frame" x="0.0" y="0.0" width="112.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="s5j-Zk-ppQ">
+                                        <rect key="frame" x="114.5" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="includeAudioChanged:" destination="9u9-h0-Dve" eventType="valueChanged" id="HM2-zS-Peh"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a3f-nv-xon">
+                                <rect key="frame" x="20" y="190" width="374" height="300"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="1qz-6x-qC3">
+                                        <rect key="frame" x="162" y="200" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="4Wj-Gs-WME"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="8gi-ll-YPG"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="D7h-vG-5Oq"/>
+                                            <constraint firstAttribute="height" constant="50" id="Tv2-kd-1n1"/>
+                                        </constraints>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="0fF-e8-cki"/>
+                                    <constraint firstItem="1qz-6x-qC3" firstAttribute="centerX" secondItem="a3f-nv-xon" secondAttribute="centerX" id="pcI-GN-h3g"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ejw-hs-cCJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="a3f-nv-xon" firstAttribute="leading" secondItem="Ejw-hs-cCJ" secondAttribute="leading" constant="20" id="5dv-O7-tGm"/>
+                            <constraint firstItem="hka-CV-Luu" firstAttribute="centerX" secondItem="Bca-7f-ynj" secondAttribute="centerX" id="FjJ-F3-n9F"/>
+                            <constraint firstItem="Ejw-hs-cCJ" firstAttribute="trailing" secondItem="a3f-nv-xon" secondAttribute="trailing" constant="20" id="HEU-Iy-Jfr"/>
+                            <constraint firstItem="drU-xS-ZKz" firstAttribute="top" secondItem="a3f-nv-xon" secondAttribute="bottom" constant="20" id="NcR-cq-vf6"/>
+                            <constraint firstItem="drU-xS-ZKz" firstAttribute="centerX" secondItem="Bca-7f-ynj" secondAttribute="centerX" id="eBq-ap-H6E"/>
+                            <constraint firstItem="a3f-nv-xon" firstAttribute="top" secondItem="Ejw-hs-cCJ" secondAttribute="top" constant="50" id="uYP-tq-k15"/>
+                            <constraint firstItem="hka-CV-Luu" firstAttribute="top" secondItem="drU-xS-ZKz" secondAttribute="bottom" constant="20" id="yjw-74-Yb0"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Imgly Video Editor" id="xe7-Uq-YeL">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="LaV-u0-hRk">
+                            <connections>
+                                <action selector="selectVideo:" destination="9u9-h0-Dve" id="WsY-jj-nTy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="a3f-nv-xon" id="gVl-Yh-gGV"/>
+                        <outlet property="includeAudio" destination="s5j-Zk-ppQ" id="ogw-Gi-vdY"/>
+                        <outlet property="loadingIndicator" destination="1qz-6x-qC3" id="ndr-8Q-g5t"/>
+                        <outlet property="playButton" destination="drU-xS-ZKz" id="3BR-8U-XdD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b93-fx-G49" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3597.1014492753625" y="77.678571428571431"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="L3d-Ha-N1n">
+        <scene sceneID="wQe-gX-oT3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9Wc-h3-hJ4" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fKY-7O-5Cv" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="EBL-MM-in0">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="cxO-PH-ftS">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Fj8-rO-5zG" kind="relationship" relationship="rootViewController" id="Uai-Rj-Jul"/>
+                        <segue destination="8zm-Ff-qvU" kind="relationship" relationship="rootViewController" id="a6e-P0-pA1"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5hV-br-58B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNL-Hb-CPC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776.8115942028987" y="758.70535714285711"/>
+            <point key="canvasLocation" x="1969.5652173913045" y="460.71428571428567"/>
         </scene>
     </scenes>
     <resources>

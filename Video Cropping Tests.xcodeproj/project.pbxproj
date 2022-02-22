@@ -14,7 +14,10 @@
 		D9B953E227BADB2200B87EE6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9B953E027BADB2200B87EE6 /* LaunchScreen.storyboard */; };
 		D9B953EE27BADF5600B87EE6 /* PryntTrimmerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B953ED27BADF5600B87EE6 /* PryntTrimmerViewController.swift */; };
 		D9B953F127BAFB4D00B87EE6 /* PryntTrimmerView in Frameworks */ = {isa = PBXBuildFile; productRef = D9B953F027BAFB4D00B87EE6 /* PryntTrimmerView */; };
-		D9B953F327BC310E00B87EE6 /* VideoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B953F227BC310E00B87EE6 /* VideoPickerViewController.swift */; };
+		D9B953F327BC310E00B87EE6 /* VideoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9B953F227BC310E00B87EE6 /* VideoUploadManager.swift */; };
+		D9F68CA827C017570083EF29 /* VideoEditorSDK in Frameworks */ = {isa = PBXBuildFile; productRef = D9F68CA727C017570083EF29 /* VideoEditorSDK */; };
+		D9F68CAB27C0190C0083EF29 /* ImglyVideoEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F68CAA27C0190C0083EF29 /* ImglyVideoEditorViewController.swift */; };
+		D9F68CAE27C02A040083EF29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F68CAD27C02A040083EF29 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +29,9 @@
 		D9B953E127BADB2200B87EE6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9B953E327BADB2200B87EE6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D9B953ED27BADF5600B87EE6 /* PryntTrimmerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryntTrimmerViewController.swift; sourceTree = "<group>"; };
-		D9B953F227BC310E00B87EE6 /* VideoPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPickerViewController.swift; sourceTree = "<group>"; };
+		D9B953F227BC310E00B87EE6 /* VideoUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoUploadManager.swift; sourceTree = "<group>"; };
+		D9F68CAA27C0190C0083EF29 /* ImglyVideoEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImglyVideoEditorViewController.swift; sourceTree = "<group>"; };
+		D9F68CAD27C02A040083EF29 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F68CA827C017570083EF29 /* VideoEditorSDK in Frameworks */,
 				D9B953F127BAFB4D00B87EE6 /* PryntTrimmerView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,14 +68,32 @@
 			children = (
 				D9B953D527BADB2000B87EE6 /* AppDelegate.swift */,
 				D9B953D727BADB2000B87EE6 /* SceneDelegate.swift */,
-				D9B953ED27BADF5600B87EE6 /* PryntTrimmerViewController.swift */,
-				D9B953F227BC310E00B87EE6 /* VideoPickerViewController.swift */,
+				D9F68CAD27C02A040083EF29 /* ViewController.swift */,
+				D9F68CAC27C019140083EF29 /* Imgly */,
+				D9F68CA927C018DD0083EF29 /* Prynt Trimmer */,
 				D9B953DB27BADB2000B87EE6 /* Main.storyboard */,
 				D9B953DE27BADB2200B87EE6 /* Assets.xcassets */,
 				D9B953E027BADB2200B87EE6 /* LaunchScreen.storyboard */,
 				D9B953E327BADB2200B87EE6 /* Info.plist */,
 			);
 			path = "Video Cropping Tests";
+			sourceTree = "<group>";
+		};
+		D9F68CA927C018DD0083EF29 /* Prynt Trimmer */ = {
+			isa = PBXGroup;
+			children = (
+				D9B953ED27BADF5600B87EE6 /* PryntTrimmerViewController.swift */,
+				D9B953F227BC310E00B87EE6 /* VideoUploadManager.swift */,
+			);
+			name = "Prynt Trimmer";
+			sourceTree = "<group>";
+		};
+		D9F68CAC27C019140083EF29 /* Imgly */ = {
+			isa = PBXGroup;
+			children = (
+				D9F68CAA27C0190C0083EF29 /* ImglyVideoEditorViewController.swift */,
+			);
+			name = Imgly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,6 +114,7 @@
 			name = "Video Cropping Tests";
 			packageProductDependencies = (
 				D9B953F027BAFB4D00B87EE6 /* PryntTrimmerView */,
+				D9F68CA727C017570083EF29 /* VideoEditorSDK */,
 			);
 			productName = "Video Cropping Tests";
 			productReference = D9B953D227BADB2000B87EE6 /* Video Cropping Tests.app */;
@@ -121,6 +146,7 @@
 			mainGroup = D9B953C927BADB2000B87EE6;
 			packageReferences = (
 				D9B953EF27BAFB4D00B87EE6 /* XCRemoteSwiftPackageReference "PryntTrimmerView" */,
+				D9F68CA627C017570083EF29 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */,
 			);
 			productRefGroup = D9B953D327BADB2000B87EE6 /* Products */;
 			projectDirPath = "";
@@ -149,7 +175,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9B953F327BC310E00B87EE6 /* VideoPickerViewController.swift in Sources */,
+				D9F68CAE27C02A040083EF29 /* ViewController.swift in Sources */,
+				D9F68CAB27C0190C0083EF29 /* ImglyVideoEditorViewController.swift in Sources */,
+				D9B953F327BC310E00B87EE6 /* VideoUploadManager.swift in Sources */,
 				D9B953D627BADB2000B87EE6 /* AppDelegate.swift in Sources */,
 				D9B953EE27BADF5600B87EE6 /* PryntTrimmerViewController.swift in Sources */,
 				D9B953D827BADB2000B87EE6 /* SceneDelegate.swift in Sources */,
@@ -382,6 +410,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		D9F68CA627C017570083EF29 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/imgly/vesdk-ios-build";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -389,6 +425,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D9B953EF27BAFB4D00B87EE6 /* XCRemoteSwiftPackageReference "PryntTrimmerView" */;
 			productName = PryntTrimmerView;
+		};
+		D9F68CA727C017570083EF29 /* VideoEditorSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9F68CA627C017570083EF29 /* XCRemoteSwiftPackageReference "vesdk-ios-build" */;
+			productName = VideoEditorSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -16,7 +16,7 @@ import PhotosUI
 class PryntTrimmerViewController: UIViewController {
     // MARK: - Properties
     // Upload
-    var fetchResult: PHFetchResult<PHAsset>?
+//    var fetchResult: PHFetchResult<PHAsset>?
     var videoUploadManager = VideoUploadManager()
 
     // Player
@@ -35,9 +35,11 @@ class PryntTrimmerViewController: UIViewController {
     @IBOutlet weak var scrollBack: UIImageView!
     @IBOutlet weak var scrollForward: UIImageView!
     @IBOutlet weak var includeAudio: UISwitch!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
 
     // Actions
     @IBAction func selectVideo(_ sender: UIBarButtonItem) {
+        loadingIndicator.startAnimating()
         present(videoUploadManager.picker, animated: true)
     }
 
@@ -76,7 +78,7 @@ class PryntTrimmerViewController: UIViewController {
 
     private func setupView() {
         DispatchQueue.main.async {
-            self.loadLibrary()
+            self.loadingIndicator.hidesWhenStopped = true
             self.trimmerView.delegate = self
             self.trimmerView.minDuration = 5
             self.trimmerView.maxDuration = 30
@@ -101,13 +103,6 @@ class PryntTrimmerViewController: UIViewController {
         }
     }
 
-    private func loadLibrary() {
-        PHPhotoLibrary.requestAuthorization { status in
-            if status == .authorized {
-                self.fetchResult = PHAsset.fetchAssets(with: .video, options: nil)
-            }
-        }
-    }
     // MARK: - Methods
     // Upload
     @objc func loadVideo() {
@@ -122,6 +117,8 @@ class PryntTrimmerViewController: UIViewController {
                 if asset.duration.seconds > 30 {
                     self.scrollForward.layer.opacity = 1
                 }
+
+                self.loadingIndicator.stopAnimating()
             }
         }
     }

@@ -18,7 +18,7 @@ class VideoUploadManager: PHPickerViewControllerDelegate {
     var selectedAssetIdentifiers = [String]()
     var selectedAssetIdentifierIterator: IndexingIterator<[String]>?
     var currentAssetIdentifier: String?
-    var progress: Progress?
+    var isLoading = false
     var videoURL: URL?
 
     // MARK: - Initializer
@@ -51,13 +51,14 @@ class VideoUploadManager: PHPickerViewControllerDelegate {
                     print("Selection is empty")
             } else {
                 print("\(self.selection.count) items selected.")
+                self.isLoading = true
                 guard let assetIdentifier = self.selectedAssetIdentifierIterator?.next() else { return }
                 self.currentAssetIdentifier = assetIdentifier
 
                 let itemProvider = self.selection[assetIdentifier]!.itemProvider
 
                 if itemProvider.hasItemConformingToTypeIdentifier(UTType.movie.identifier) {
-                    self.progress = itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { url, error in
+                   itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.movie.identifier) { url, error in
                         do {
                             guard let url = url, error == nil else {
                                 throw error ?? NSError(domain: NSFileProviderErrorDomain, code: -1, userInfo: nil)
@@ -73,7 +74,7 @@ class VideoUploadManager: PHPickerViewControllerDelegate {
                         }
                     }
                 } else {
-                    self.progress = nil
+                    self.isLoading = false
                 }
             }
         }
@@ -86,10 +87,13 @@ class VideoUploadManager: PHPickerViewControllerDelegate {
             if let url = object as? URL {
                 self.videoURL = url
                 NotificationCenter.default.post(name: .videoSaved, object: nil)
+                self.isLoading = false
             } else if let error = error {
                 print("Couldn't display \(assetIdentifier) with error: \(error)")
+                self.isLoading = false
             } else {
                 print("Unknown error")
+                self.isLoading = false
             }
         }
     }
